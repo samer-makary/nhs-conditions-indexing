@@ -290,3 +290,5 @@ $RECYCLE.BIN/
 
 # python scrapy tutorial
 brickset-scraper/
+
+nhs_backend/java/data/

@@ -1,6 +1,10 @@
 package com.bhtask.nhs.backend.dao;
 
-import java.net.URI;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.elasticsearch.annotations.Document;
+import org.springframework.data.elasticsearch.annotations.Field;
+import org.springframework.data.elasticsearch.annotations.FieldIndex;
+import org.springframework.data.elasticsearch.annotations.FieldType;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -11,15 +15,27 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @author samer
  *
  */
+@Document(indexName = "nhs", type = "conditions")
 public class Condition {
 
-    private final URI url;
+    public static final String FIELD__URL = "url";
+    public static final String FIELD__TITLE = "title";
+    public static final String FIELD__CONTENT = "content";
+
+    @Id
+    @Field(index = FieldIndex.no, type = FieldType.String)
+    private final String url;
+
+    @Field(index = FieldIndex.not_analyzed, type = FieldType.String)
     private final String title;
+
+    @Field(index = FieldIndex.analyzed, analyzer = "english", type = FieldType.String)
     private final String content;
+
     private final int hashcode;
 
     @JsonCreator
-    public Condition(@JsonProperty("url") URI url, @JsonProperty("title") String title,
+    public Condition(@JsonProperty("url") String url, @JsonProperty("title") String title,
 	    @JsonProperty("content") String content) {
 
 	if (url == null)
@@ -35,7 +51,7 @@ public class Condition {
 	return title;
     }
 
-    public URI getUrl() {
+    public String getUrl() {
 	return url;
     }
 
