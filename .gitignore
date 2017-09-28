@@ -291,4 +291,6 @@ $RECYCLE.BIN/
 # python scrapy tutorial
 brickset-scraper/
 
+# Ignoring Elasticsearch data indexing
 nhs_backend/java/data/
+nhs_backend/scala/data/
