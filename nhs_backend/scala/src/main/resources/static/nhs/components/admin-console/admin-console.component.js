@@ -9,7 +9,7 @@ angular
                 '$http',
                 function AdminConsoleController($http) {
                     var that = this;
-
+                    this.reindexBtnLbl = "Rebuild Index";
                     this.setIndexSize = function() {
                         that.indexSize = "N/A!";
                         $http({
@@ -28,6 +28,7 @@ angular
                     };
 
                     this.rebuildIndex = function() {
+                        that.reindexBtnLbl = "Building index..."
                         $http({
                             method: 'POST',
                             url: 'conditions/loadIndex',
@@ -37,9 +38,12 @@ angular
                                 console.log("rebuildIndex received:", response.data);
                                 that.setIndexSize()
                                 alert("Rebuilding Index: " + response.data);
+                                that.reindexBtnLbl = "Rebuild Index";
                             },
                             function errorCallback(response) {
                                 console.error(response);
+                                alert("Rebuilding Index: Failed!");
+                                that.reindexBtnLbl = "Rebuild Index";
                             }
                         );
                     };

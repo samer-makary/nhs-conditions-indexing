@@ -3,7 +3,7 @@
         <div class="panel-heading">Administrator Console</div>
         <div class="panel-body">Count of NHS Index entries load into index is <b><em>{{$ctrl.indexSize}}</em></b>.
             <button class="btn btn-danger pull-right" type="submit" ng-click="$ctrl.rebuildIndex()">
-                <span aria-hidden="true">Rebuild Index</span>
+                <span aria-hidden="true">{{$ctrl.reindexBtnLbl}}</span>
             </button>
         </div>
     </div>
