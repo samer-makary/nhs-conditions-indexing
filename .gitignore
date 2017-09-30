@@ -294,3 +294,6 @@ brickset-scraper/
 # Ignoring Elasticsearch data indexing
 nhs_backend/java/data/
 nhs_backend/scala/data/
+
+# AngularJS tutorial
+SpringBootCRUDApplicationExample/
