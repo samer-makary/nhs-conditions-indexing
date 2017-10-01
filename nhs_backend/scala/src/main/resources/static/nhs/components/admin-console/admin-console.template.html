@@ -3,6 +3,8 @@
     <div class="md-subhead" flex-gt-xs="">
         Count of NHS Index entries load into index is <b><em>{{$ctrl.indexSize}}</em></b>.
     </div>
+    <md-progress-circular ng-disabled="!$ctrl.buildingIndex" ng-show="$ctrl.buildingIndex" md-mode="indeterminate"
+                          class="md-warn" md-diameter="35"></md-progress-circular>
     <md-button class="md-raised md-warn" type="submit" ng-click="$ctrl.rebuildIndex()"
                aria-label="{{$ctrl.reindexBtnLbl}}">
         <span aria-hidden="true">{{$ctrl.reindexBtnLbl}}</span>

@@ -1,0 +1,31 @@
+<md-dialog aria-label="Administrator Login">
+    <form ng-cloak>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>Administrator Login</h2>
+            </div>
+        </md-toolbar>
+
+        <md-dialog-content>
+            <div class="md-dialog-content" layout="row">
+                <md-input-container flex-gt-xs="">
+                    <label>Username</label>
+                    <input ng-model="ctrl.adminUsername" type="text" name="password" required/>
+                </md-input-container>
+                <md-input-container flex-gt-xs="">
+                    <label>Password</label>
+                    <input ng-model="ctrl.adminPassword" type="password" name="password" required/>
+                </md-input-container>
+            </div>
+        </md-dialog-content>
+
+        <md-dialog-actions layout="row">
+            <md-button class="md-raised" ng-click="ctrl.cancelLoginDialog()">
+                Cancel
+            </md-button>
+            <md-button class="md-raised md-primary" ng-click="ctrl.confirmLoginDialog()">
+                Confirm
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>
