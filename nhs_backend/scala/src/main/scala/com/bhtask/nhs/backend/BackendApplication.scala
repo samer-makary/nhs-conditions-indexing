@@ -3,6 +3,7 @@ package com.bhtask.nhs.backend
 import java.text.SimpleDateFormat
 import java.util.Date
 
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.context.properties.EnableConfigurationProperties
@@ -11,10 +12,11 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.{HttpSecurity, WebSecurity}
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter
 import org.springframework.security.config.http.SessionCreationPolicy
+import org.springframework.security.core.userdetails.UserDetailsService
 
 @SpringBootApplication
 @EnableConfigurationProperties(Array(classOf[BackendProperties]))
-class BackendApplication {
+class BackendApplication(@Autowired val jdbcUserDetailsService: UserDetailsService) {
 
   @Bean def setupSecurity = new WebSecurityConfigurerAdapter(true) {
     override def configure(web: WebSecurity) = {
@@ -33,7 +35,7 @@ class BackendApplication {
     }
 
     override def configure(auth: AuthenticationManagerBuilder) = {
-      auth.inMemoryAuthentication().withUser("smakary").password("123").authorities("USER", "ADMIN");
+      auth.userDetailsService(jdbcUserDetailsService)
     }
   }
 
