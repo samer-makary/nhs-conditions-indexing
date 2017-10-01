@@ -1,10 +1,10 @@
-<div class="panel-group col-lg-12">
-    <div class="panel panel-info">
-        <div class="panel-heading">Administrator Console</div>
-        <div class="panel-body">Count of NHS Index entries load into index is <b><em>{{$ctrl.indexSize}}</em></b>.
-            <button class="btn btn-danger pull-right" type="submit" ng-click="$ctrl.rebuildIndex()">
-                <span aria-hidden="true">{{$ctrl.reindexBtnLbl}}</span>
-            </button>
-        </div>
+<h3 class="md-headline">Administrator Console</h3>
+<div layout="row" layout-align="start center">
+    <div class="md-subhead" flex-gt-xs="">
+        Count of NHS Index entries load into index is <b><em>{{$ctrl.indexSize}}</em></b>.
     </div>
+    <md-button class="md-raised md-warn" type="submit" ng-click="$ctrl.rebuildIndex()"
+               aria-label="{{$ctrl.reindexBtnLbl}}">
+        <span aria-hidden="true">{{$ctrl.reindexBtnLbl}}</span>
+    </md-button>
 </div>

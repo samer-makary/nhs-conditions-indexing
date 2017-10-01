@@ -1,22 +1,25 @@
+<h3 class="md-headline">Search Console</h3>
 <form role="form">
-	<!-- Search Field -->
-	<div class="form-group col-lg-12">
-		<div class="input-group">
-			<input ng-model="$ctrl.searchQuery" class="form-control" type="text"
-				name="search" placeholder="for example: cancer" required /> <span
-				class="input-group-btn">
-				<button class="btn btn-success" type="submit"
-					ng-click="$ctrl.submit()">
-					<span aria-hidden="true">Search</span>
-				</button>
-			</span>
-		</div>
-	</div>
+    <!-- Search Field -->
+    <div layout-gt-xs="row">
+        <md-input-container flex-gt-xs="">
+            <label>Query</label>
+            <input ng-model="$ctrl.searchQuery" type="text" name="search" required/>
+        </md-input-container>
+        <md-input-container>
+            <md-button class="md-raised md-primary" type="submit"
+                       ng-click="$ctrl.submit()" aria-label="Search">
+                <span aria-hidden="true">Search</span>
+            </md-button>
+        </md-input-container>
+    </div>
 </form>
 <div>
-	<ul class="list-group">
-		<li ng-repeat="cond in $ctrl.conditions" class="list-group-item">
-			<a href="{{cond.url}}" target="blank">{{cond.title}}</a>
-		</li>
-	</ul>
+    <md-subheader class="md-no-sticky">Query results:</md-subheader>
+    <md-list>
+        <md-list-item class="md-1-line" ng-repeat="cond in $ctrl.conditions" ng-click="null" ng-href="{{cond.url}}"
+                      target="_blank">
+            <a href="{{cond.url}}" target="_blank">{{cond.title}}</a>
+        </md-list-item>
+    </md-list>
 </div>
